@@ -6,6 +6,8 @@ from django.utils.module_loading import import_string as _load
 from social_publisher.exceptions import ExternalAPIError
 from social_publisher import conf
 
+from utils import logger
+
 
 class BaseBackend(object):
     name = 'base'
@@ -55,6 +57,8 @@ class BaseBackend(object):
 
         except self.exceptions as e:
             handler.exception_handle(e, data=data, obj=obj, comment=comment)
+            logger.error('Publish provider error: {}'.format(e),
+                        extra={'tags': exc_tags}, exc_info=True)
             raise ExternalAPIError()
 
         return handler.post_handle(
