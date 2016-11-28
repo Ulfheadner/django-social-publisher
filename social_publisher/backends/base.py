@@ -58,7 +58,7 @@ class BaseBackend(object):
         except self.exceptions as e:
             handler.exception_handle(e, data=data, obj=obj, comment=comment)
             logger.error('Publish provider error: {}'.format(e),
-                        extra={'tags': exc_tags}, exc_info=True)
+                        exc_info=True)
             raise ExternalAPIError()
 
         return handler.post_handle(
