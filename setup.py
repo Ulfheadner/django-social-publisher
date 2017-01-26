@@ -55,10 +55,6 @@ setup(
     description='Server-side content publishing extension for django-social-auth.',
     long_description=DESCRIPTION,
 
-    install_requires=[
-        'python-social-auth==0.2.14'
-    ],
-
     classifiers=(
         'Framework :: Django',
         'Development Status :: 4 - Beta',
